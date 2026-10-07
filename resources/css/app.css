@@ -296,9 +296,6 @@ button:active {
     }
 
     .info_circle {
-        /* # STEP 9e [WRITE] here: width: 200px;
-           I measured it on a phone: the circle is 260px WIDE and 200px HIGH → an OVAL.
-           The width 260px comes from the normal .info_circle rule. The @media only changes what you WRITE in it. */
         height: 200px;
         width: 200px;
     }
