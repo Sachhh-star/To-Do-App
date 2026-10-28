@@ -17,6 +17,7 @@
         </x-inertia::head>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="base-url" content="{{ url('/') }}">
     </head>
     <body class="font-sans antialiased">
         <x-inertia::app />

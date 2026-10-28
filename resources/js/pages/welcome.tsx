@@ -17,6 +17,14 @@ const getToken = () => {
     );
 };
 
+const getBaseUrl = () => {
+    return (
+        document
+            .querySelector('meta[name="base-url"]')
+            ?.getAttribute("content") ?? ""
+    );
+};
+
 export default function Welcome() {
     const [title, setTitle] = useState("");
     const [dueDate, setDueDate] = useState("");
@@ -58,7 +66,7 @@ export default function Welcome() {
     // load tasks
     async function loadTodos() {
         try {
-            const response = await fetch("/todos", {
+            const response = await fetch(`${getBaseUrl()}/todos`, {
                 headers: {
                     Accept: "application/json",
                 },
@@ -89,7 +97,7 @@ export default function Welcome() {
         }
 
         try {
-            const response = await fetch("/todos", {
+            const response = await fetch(`${getBaseUrl()}/todos`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -116,7 +124,7 @@ export default function Welcome() {
     // switch task between done and not done
     async function toggleTask(todo: Todo) {
         try {
-            const response = await fetch(`/todos/${todo.id}`, {
+            const response = await fetch(`${getBaseUrl()}/todos/${todo.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -146,7 +154,7 @@ export default function Welcome() {
         }
 
         try {
-            const response = await fetch(`/todos/${todo.id}`, {
+            const response = await fetch(`${getBaseUrl()}/todos/${todo.id}`, {
                 method: "DELETE",
                 headers: {
                     Accept: "application/json",
